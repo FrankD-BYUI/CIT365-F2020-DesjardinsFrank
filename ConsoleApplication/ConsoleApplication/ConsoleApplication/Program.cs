@@ -45,11 +45,11 @@ namespace ConsoleApplication
             Console.Write("Window height: ");
             heightString = Console.ReadLine();
             height = double.Parse(heightString);
-            
+
             woodLength = 2 * (width + height) * 3.25;
-            
+
             glassArea = 2 * (width * height);
-            
+
             Console.WriteLine("\nThe length of the wood is " + woodLength + " feet");
             Console.WriteLine("The area of the glass is " + glassArea + " square metres");
 
