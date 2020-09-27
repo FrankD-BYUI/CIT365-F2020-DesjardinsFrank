@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace MathQuiz
 {
+    //Icon provided by: https://www.iconfinder.com/icons/2530794/
+
     public partial class Form1 : Form
     {
         // Create a Random object called randomizer 
@@ -40,12 +42,16 @@ namespace MathQuiz
         // remaining time.
         int timeLeft;
 
+        DateTime todayDate = DateTime.Now;
+
         /// <summary>
         /// Start the quiz by filling in all of the problems
         /// and starting the timer.
         /// </summary>
         public void StartTheQuiz()
         {
+            today.Text = todayDate.ToString("dd MMMM yyyy");
+
             // Fill in the addition problem.
             // Generate two random numbers to add.
             // Store the values in the variables 'addend1' and 'addend2'.
