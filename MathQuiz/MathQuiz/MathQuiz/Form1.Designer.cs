@@ -302,7 +302,6 @@
             this.today.Name = "today";
             this.today.Size = new System.Drawing.Size(120, 13);
             this.today.TabIndex = 21;
-            this.today.Text = "26 September 2020";
             this.today.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
