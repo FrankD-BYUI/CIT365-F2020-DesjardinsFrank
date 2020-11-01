@@ -20,7 +20,7 @@ namespace ScriptureJournal.Pages.Scriptures
             _context = context;
         }
 
-        public IList<Scripture> Scripture { get; set; }
+        public IList<Scripture> Scriptures { get; set; }
         
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
@@ -32,25 +32,45 @@ namespace ScriptureJournal.Pages.Scriptures
         public string BookSort { get; set; }
         public string DateSort { get; set; }
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
+            BookSort = String.IsNullOrEmpty(sortOrder) ? "book_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+            IQueryable<Scripture> scriptureIQ = from s in _context.Scripture
+                                                select s;
+
             IQueryable<string> bookQuery = from s in _context.Scripture
                                            orderby s.Book
                                            select s.Book;
 
-            var scriptures = from scripture in _context.Scripture
-                             select scripture;
             if (!string.IsNullOrEmpty(SearchString))
             {
-                scriptures = scriptures.Where(y => y.Note.Contains(SearchString));
+                scriptureIQ = scriptureIQ.Where(s => s.Note.Contains(searchString));
             }
 
             if (!string.IsNullOrEmpty(BookFilter))
             {
-                scriptures = scriptures.Where(x => x.Book == BookFilter);
+                scriptureIQ = scriptureIQ.Where(s => s.Book == BookFilter);
+            }
+
+            switch (sortOrder)
+            {
+                case "book_desc":
+                    scriptureIQ = scriptureIQ.OrderByDescending(s => s.Book);
+                    break;
+                case "Date":
+                    scriptureIQ = scriptureIQ.OrderBy(s => s.DateAdded);
+                    break;
+                case "date_desc":
+                    scriptureIQ = scriptureIQ.OrderByDescending(s => s.DateAdded);
+                    break;
+                default:
+                    scriptureIQ = scriptureIQ.OrderBy(s => s.Book);
+                    break;
             }
             Books = new SelectList(await bookQuery.Distinct().ToListAsync());
-            Scripture = await scriptures.ToListAsync();
+            Scriptures = await scriptureIQ.AsNoTracking().ToListAsync();
         }
     }
 }
