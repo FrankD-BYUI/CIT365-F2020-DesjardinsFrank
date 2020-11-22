@@ -1,0 +1,101 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@400;700&display=swap');
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.jumbotron {
+    background-image: url(../images/Contoso.jpg);
+    background-size: cover;
+    color: #98C1D9;
+}
+
+html,
+body {
+    background-color: #E0FBFC;
+}
+
+.navbar {
+    background-color: #293241;
+}
+
+.navbar-inverse .navbar-toggle:hover {
+    background-color: #3D5A80;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-brand {
+    color: #98C1D9;
+}
+
+.btn-default {
+    background-color: #E0FBFC;
+}
+
+    .btn-default:hover {
+        background-color: #98C1D9;
+    }
+
+.contact-info p {
+    margin: 0;
+}
+
+.checkbox-td:nth-child(2) {
+    padding-left: 8px;
+}
+
+.text-danger {
+    color: #EE6C4D;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
